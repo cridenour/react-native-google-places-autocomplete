@@ -252,7 +252,7 @@ const GooglePlacesAutocomplete = React.createClass({
               this._onBlur();
 
               this.setState({
-                text: rowData.description,
+                text: rowData.description.replace(', United States', ''),
               });
 
               delete rowData.isLoading;
@@ -280,7 +280,7 @@ const GooglePlacesAutocomplete = React.createClass({
       
       
       this.setState({
-        text: rowData.description,
+        text: rowData.description.replace(', United States', ''),
       });
       this.triggerBlur(); // hide keyboard but not the results
 
@@ -290,7 +290,7 @@ const GooglePlacesAutocomplete = React.createClass({
       
     } else {
       this.setState({
-        text: rowData.description,
+        text: rowData.description.replace(', United States', ''),
       });
 
       this._onBlur();
@@ -496,7 +496,7 @@ const GooglePlacesAutocomplete = React.createClass({
               style={[{flex: 1}, defaultStyles.description, this.props.styles.description, rowData.isPredefinedPlace ? this.props.styles.predefinedPlacesDescription : {}]}
               numberOfLines={1}
             >
-              {rowData.description}
+              {rowData.description.replace(', United States', '')}
             </Text>
             {this._renderLoader(rowData)}
           </View>
